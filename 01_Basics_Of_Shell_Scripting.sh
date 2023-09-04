@@ -6,20 +6,20 @@ if [ -d "/home/ranjith/bash_shell_scripting" ]; then
 else
   echo "The directory does not exist."
 fi
-
+################################################################################################
 if [ -e "/home/ranjith/bash_shell_scripting/shellscript.sh" ]; then
   echo "The file exists."
 else
   echo "The file does not exist."
 fi
-
+################################################################################################
 #if statement example:
 age=14
 
 if [ "$age" -lt 18 ]; then
     echo "You are underage."
 fi
-
+################################################################################################
 #if else example:
 NAME="ranjith"
 
@@ -36,7 +36,7 @@ if [ "$grade" -ge 60 ]; then
 else
     echo "You failed the exam."
 fi
-
+################################################################################################
 #if -elif-else statement example:
 
 score=85
