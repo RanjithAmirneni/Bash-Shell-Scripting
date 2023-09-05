@@ -1,0 +1,119 @@
+#! /bin/bash
+#creating the function hello and calling the function passing parameter
+function hello (){
+
+	echo "Hello $1 $2!"
+}
+hello Ranjith Kumar
+#######################################################################
+#The below function will loop through each of the parameters passed  to the function and echo "Hello" followed by the parameter.
+
+function hello (){
+
+for name in $@
+do
+	echo "Hello $name"
+done
+
+}
+
+hello Ranjith Shivam Mahadev
+#######################################################################
+
+# Function with parameters
+greet() {
+    local name="$1"
+    echo "Hello, $name!"
+}
+
+# Call the function with an argument
+greet "Shivam Mittal"
+
+######################################################################
+#*********************GLOBAL VARIABLES************************************
+#defining the global variable and making use of it inside of the function
+GLOBAL_VAR="RanjithKumarA"
+function hello (){
+
+	echo "The Global Varible Accessing Inside of Fn: Hello $GLOBAL_VAR!"
+}
+hello
+
+echo "GLOBAL Varibale Accesing Outside of the Fn: Hello $GLOBAL_VAR!"
+#Note: If you define the global variable after the function call it wont be accessible inside the function.
+######################################################################################################################
+#*************************LOCAL VARABLES**********************************
+#defining the local variable and using it inside of the function and trying to use out side of the function
+
+function hello (){
+	local LOCAL_VAR="ARK"
+	echo "Local Varible Accessing Inside of the Fn: Hello $LOCAL_VAR!"
+}
+hello
+
+echo "Local Varible Accesing Outside of the Fn: Hello $LOCAL_VAR!"
+#####################################################################################################################
+#Global Variable define inside of the function is not available outside of the function untill the function is called/executed
+
+function hello (){
+        GLOBAL_VAR="RK"
+        echo "Fn call: Global Varible Accessing Inside of the Fn: Hello $GLOBAL_VAR!"
+}
+
+echo "1.The global variable defined inside of the fn accessing before fn call : $GLOBAL_VAR"
+hello
+echo "2.The global variable defined inside of the fn accessing after fn call : $GLOBAL_VAR"
+
+######################################################################################################################
+#Returning Values from Functions
+
+# Function that returns a value
+add() {
+    local num1="$1"
+    local num2="$2"
+    local sum=$((num1 + num2))
+    echo "$sum"
+}
+
+# Call the function and capture the return value
+result=$(add 5 3)
+echo "The result is $result"
+######################################################################################################################
+
+#Using Functions in Conditional Statements
+
+# Function to check if a number is even
+is_even() {
+    local num="$1"
+    if [ $((num % 2)) -eq 0 ]; then
+        echo "Even"
+    else
+        echo "Odd"
+    fi
+}
+
+# Call the function within a conditional statement
+number=7
+if [ "$(is_even $number)" = "Even" ]; then
+    echo "$number is even."
+else
+    echo "$number is odd."
+fi
+###################################################################################################################
+
+## Recursive function to calculate factorial
+factorial() {
+    local n="$1"
+    if [ $n -le 1 ]; then
+        echo 1
+    else
+        local prev_result=$(factorial $((n - 1)))
+        echo $((n * prev_result))
+    fi
+}
+
+# Calculate factorial of 5
+result=$(factorial 5)
+echo "Factorial of 5 is $result"
+###############################################################################################################
+
